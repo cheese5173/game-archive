@@ -17,7 +17,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
       </head>
-      <body className="bg-black text-white antialiased">
+      <body className="bg-black text-white antialiased overflow-x-hidden">
         <Header />
         {children}
       </body>

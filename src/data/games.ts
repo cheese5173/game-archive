@@ -8,6 +8,9 @@ export interface Game {
   developer: string;
   features: string[];
   bosses?: { name: string; description: string; }[]; // 나중에 보스 갤러리에서 쓸 데이터
+  dlc?: string;
+  imageUrl?: string; // 메인 포스터나 배경 이미지 경로 (예: "/images/elden-ring.jpg")
+  trailerId?: string; // 유튜브 영상 ID (예: "E3Huy2cdih0")
 }
 
 // 2. 각 게임마다 누락되었던 특징(features) 배열을 추가했습니다.
@@ -20,7 +23,13 @@ export const games: Game[] = [
     developer: "FromSoftware",
     description: "틈새의 땅에서 빛바랜 자가 되어 엘든 링의 왕이 되는 장대한 여정.",
     features: ["방대하고 입체적인 오픈 월드 탐험", "수십 가지의 무기와 마법 조합", "프롬 소프트웨어 특유의 극한의 난이도와 성취감"],
-    bosses: []
+    trailerId: "E3Huy2cdih0",
+    bosses: [
+      { name: "말레니아", description: "미켈라의 칼날. 부패의 여신으로 각성하며 수많은 플레이어를 좌절시킨 엘든 링 최고의 난이도 보스." },
+      { name: "라단", description: "별 부수는 영웅. 부패에 먹혀가면서도 중력 마법으로 별의 운행을 붙잡고 있는 최강의 데미갓." },
+      { name: "고드릭", description: "접목의 군주. 힘에 대한 집착으로 수많은 빛바랜 자들의 팔다리를 자신에게 접목시킨 지배자." },
+      { name: "모르고트", description: "축복왕. 흉조로 태어나 버림받았음에도 황금 나무를 수호하기 위해 홀로 로데일의 왕좌를 지키는 비운의 보스." }
+    ]
   },
   {
     id: "bg3",
@@ -40,6 +49,7 @@ export const games: Game[] = [
     developer: "CD PROJEKT RED",
     description: "권력, 사치, 신체 개조에 집착하는 거대 도시 나이트 시티를 배경으로 한 오픈 월드 어드벤처.",
     features: ["압도적인 비주얼의 미래 도시 나이트 시티", "다양한 신체 사이버웨어 개조", "몰입감 넘치는 1인칭 시점 액션"],
+     trailerId: "8X2kIfS6fb8",
     bosses: []
   },
   {
