@@ -1,64 +1,75 @@
-// 보스 정보 설계도에 weakness(약점)와 drops(드랍 아이템) 추가
-export interface Boss {
-  id: string;
-  name: string;
-  image: string;
-  description: string;
-  weakness?: string;
-  drops?: string[];
-}
-
+// 1. 상세 페이지가 요구하는 데이터 형식(features, developer 등)을 추가했습니다.
 export interface Game {
   id: string;
   title: string;
   genre: string;
-  year: string;
-  developer: string;
+  year: number;
   description: string;
+  developer: string;
   features: string[];
-  videoUrl: string;
-  dlc?: string;
-  bosses?: Boss[];
+  bosses?: { name: string; description: string; }[]; // 나중에 보스 갤러리에서 쓸 데이터
 }
 
+// 2. 각 게임마다 누락되었던 특징(features) 배열을 추가했습니다.
 export const games: Game[] = [
   {
     id: "elden-ring",
-    title: "Elden Ring",
+    title: "엘든 링",
     genre: "Action RPG",
-    year: "2022",
+    year: 2022,
     developer: "FromSoftware",
-    description: "황금 나무의 축복이 끊어진 틈새의 땅에서 엘든 링의 파편을 모아 엘데의 왕이 되기 위한 여정을 떠납니다.",
-    features: ["광활한 오픈월드", "도전적인 보스 전투", "다양한 무기와 마법 조합"],
-    videoUrl: "https://www.youtube.com/embed/...",
-    dlc: "Shadow of the Erdtree (황금 나무의 그림자)",
-    bosses: [
-      {
-        id: "malenia",
-        name: "미켈라의 검, 말레니아",
-        image: "MALENIA IMAGE", 
-        description: "부패의 여신이자 틈새의 땅에서 가장 강력한 데미갓 중 하나입니다. 피흡(공격 시 체력 회복)과 물새 난격이라는 치명적인 패턴을 가졌습니다.",
-        weakness: "출혈, 동상, 화염",
-        drops: ["말레니아의 거대한 룬", "부패의 여신의 추억"]
-      },
-      {
-        id: "radahn",
-        name: "별 부수는 라단",
-        image: "RADAHN IMAGE",
-        description: "중력 마법을 다루며 붉은 에오니아의 부패에 감염된 채 사막을 떠도는 장군입니다. 수많은 NPC 백령들을 소환해 함께 싸우는 레이드 전투가 특징입니다.",
-        weakness: "붉은 부패, 독, 찌르기",
-        drops: ["라단의 거대한 룬", "별 부수는 기사의 추억"]
-      }
-    ]
+    description: "틈새의 땅에서 빛바랜 자가 되어 엘든 링의 왕이 되는 장대한 여정.",
+    features: ["방대하고 입체적인 오픈 월드 탐험", "수십 가지의 무기와 마법 조합", "프롬 소프트웨어 특유의 극한의 난이도와 성취감"],
+    bosses: []
   },
   {
-    id: "crusader-kings-3",
-    title: "Crusader Kings 3",
-    genre: "Strategy",
-    year: "2020",
-    developer: "Paradox Interactive",
-    description: "가문과 혈통을 이어가며 중세 시대를 통치하는 대전략 게임. 전쟁뿐만 아니라 외교, 암살, 결혼을 통한 복잡한 정치 공작이 특징입니다.",
-    features: ["심도 있는 가문 관리", "역사적 고증과 종교 시스템", "수만 가지의 무작위 이벤트"],
-    videoUrl: "https://www.youtube.com/embed/..."
+    id: "bg3",
+    title: "발더스 게이트 3",
+    genre: "CRPG",
+    year: 2023,
+    developer: "Larian Studios",
+    description: "주사위가 당신의 운명을 결정하는 잊혀진 세계관 기반의 궁극적인 롤플레잉 경험.",
+    features: ["선택에 따라 완전히 달라지는 거대한 스토리 분기", "전략적인 턴제 D&D 전투 시스템", "매력적이고 입체적인 동료 캐릭터들"],
+    bosses: []
+  },
+  {
+    id: "cyberpunk-2077",
+    title: "사이버펑크 2077",
+    genre: "Action RPG",
+    year: 2020,
+    developer: "CD PROJEKT RED",
+    description: "권력, 사치, 신체 개조에 집착하는 거대 도시 나이트 시티를 배경으로 한 오픈 월드 어드벤처.",
+    features: ["압도적인 비주얼의 미래 도시 나이트 시티", "다양한 신체 사이버웨어 개조", "몰입감 넘치는 1인칭 시점 액션"],
+    bosses: []
+  },
+  {
+    id: "ghost-of-tsushima",
+    title: "고스트 오브 쓰시마",
+    genre: "Action Adventure",
+    year: 2020,
+    developer: "Sucker Punch",
+    description: "몽골 제국의 침략에 맞서 쓰시마 섬을 지키기 위한 사카이 진의 고독한 사무라이 액션.",
+    features: ["바람이 길을 안내하는 아름다운 오픈 월드", "절도 있고 묵직한 카타나 검술 액션", "무사의 명예와 망령의 길 사이의 갈등"],
+    bosses: []
+  },
+  {
+    id: "god-of-war",
+    title: "갓 오브 워",
+    genre: "Action Adventure",
+    year: 2018,
+    developer: "Santa Monica Studio",
+    description: "북유럽 신화의 가혹한 세계에서 크레이토스와 그의 아들 아트레우스가 펼치는 서사시.",
+    features: ["끊기지 않는 롱테이크 카메라 연출", "리바이어던 도끼를 활용한 묵직한 액션", "아버지와 아들의 깊이 있는 서사"],
+    bosses: []
+  },
+  {
+    id: "kcd2",
+    title: "킹덤 컴: 딜리버런스 2",
+    genre: "Action RPG",
+    year: 2025,
+    developer: "Warhorse Studios",
+    description: "15세기 보헤미아 내전을 배경으로 펼쳐지는 헨리의 사실적이고 처절한 중세 생존기.",
+    features: ["철저한 역사적 고증을 거친 15세기 유럽", "실제 검술을 바탕으로 한 1인칭 전투", "플레이어의 평판에 반응하는 사실적인 NPC"],
+    bosses: []
   }
 ];
