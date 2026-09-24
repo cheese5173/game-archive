@@ -8,14 +8,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-black/60 backdrop-blur-lg border-b border-white/5 transition-all">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         
-        {/* 로고 영역 */}
-        <Link href="/" className="text-xl font-black tracking-tighter text-white hover:text-gray-300 transition-colors">
-          ARCHIVE.
+        {/* 🌟 로고 영역 (수정: 이름은 ARCHIVE, 이동할 곳은 "/" 메인 페이지) */}
+        <Link href="/" className="text-lg font-black tracking-widest text-white hover:text-gray-300 transition-colors uppercase">
+          ARCHIVE
         </Link>
         
-        {/* 우측 네비게이션 메뉴 */}
+        {/* 🌟 우측 네비게이션 메뉴 (수정: 이동할 곳은 "/games" 전체 카드 섹션) */}
         <nav className="flex gap-6 text-sm font-bold text-gray-400">
-          <Link href="/" className="hover:text-white transition-colors">
+          <Link href="/games" className="hover:text-white transition-colors">
             Games
           </Link>
           <button className="hover:text-white transition-colors cursor-not-allowed">
