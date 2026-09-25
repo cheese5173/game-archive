@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+/* Tailwind v4에게 기본 폰트를 프리텐다드로 바꾸라고 명령 */
+@theme {
+  --font-sans: "Pretendard", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* 사이트 전체 글꼴을 방금 만든 폰트로 강제 고정 */
+body {
+  font-family: var(--font-sans);
+}
+
+/* 하단에 추가 */
+@keyframes glitch-anim {
+  0% { transform: translate(0); text-shadow: 0 0 0; }
+  20% { transform: translate(-2px, 2px); text-shadow: 2px 0px rgba(255,0,0,0.8), -2px 0px rgba(0,255,255,0.8); }
+  40% { transform: translate(-2px, -2px); text-shadow: none; }
+  60% { transform: translate(2px, 2px); text-shadow: 2px 0px rgba(255,0,0,0.8), -2px 0px rgba(0,255,255,0.8); }
+  80% { transform: translate(2px, -2px); text-shadow: none; }
+  100% { transform: translate(0); text-shadow: 0 0 0; }
+}
+
+.hover-glitch:hover {
+  animation: glitch-anim 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
