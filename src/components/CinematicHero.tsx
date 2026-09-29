@@ -10,6 +10,7 @@ interface CinematicHeroProps {
     genre: string;
     year: number;
     trailerId?: string;
+    titleSize?: string;
   };
 }
 
@@ -17,9 +18,8 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
-  const [volume, setVolume] = useState(50); // 기본 볼륨 50%
+  const [volume, setVolume] = useState(50);
 
-  // 1. 재생/일시정지 토글
   const togglePlay = () => {
     if (!iframeRef.current || !iframeRef.current.contentWindow) return;
     const action = isPlaying ? "pauseVideo" : "playVideo";
@@ -30,7 +30,6 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
     setIsPlaying(!isPlaying);
   };
 
-  // 2. 음소거 토글
   const toggleMute = () => {
     if (!iframeRef.current || !iframeRef.current.contentWindow) return;
     const action = isMuted ? "unMute" : "mute";
@@ -40,7 +39,6 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
     );
     setIsMuted(!isMuted);
 
-    // 음소거 해제 시 볼륨이 0이었다면 자동으로 50으로 복구
     if (isMuted && volume === 0) {
       setVolume(50);
       iframeRef.current.contentWindow.postMessage(
@@ -50,20 +48,17 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
     }
   };
 
-  // 3. 슬라이더로 볼륨 조절
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseInt(e.target.value, 10);
     setVolume(newVolume);
 
     if (!iframeRef.current || !iframeRef.current.contentWindow) return;
     
-    // 유튜브 API로 볼륨 값 전송
     iframeRef.current.contentWindow.postMessage(
       JSON.stringify({ event: "command", func: "setVolume", args: [newVolume] }),
       "*"
     );
 
-    // 볼륨이 0이 되면 음소거 아이콘으로 변경, 0보다 커지면 소리 켜짐 아이콘으로 변경
     if (newVolume === 0 && !isMuted) {
       setIsMuted(true);
       iframeRef.current.contentWindow.postMessage(
@@ -79,14 +74,22 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
     }
   };
 
+  // 🌟 한글 폭을 고려하여 8글자 초과 시 크기를 줄이도록 수정
+  const autoTitleSize = game.title.length > 8 
+    ? "text-4xl md:text-5xl lg:text-6xl max-w-full" // 킹덤컴 등 (8글자 넘으면 적당한 크기로 1줄 유지)
+    : "text-6xl md:text-[7rem] lg:text-[8.5rem]"; // 엘든링 등 (8글자 이하면 아주 거대하게)
+  // 수동 설정된 titleSize가 있으면 그것을, 없으면 자동 계산된 사이즈를 사용
+  const finalTitleSize = game.titleSize || autoTitleSize;
+
   return (
     <section className="relative w-full h-[85vh] min-h-[600px] flex items-end justify-start mb-20 overflow-hidden">
       
-      {/* 🎬 배경 영상 */}
+     {/* 🎬 배경 영상 */}
       <div className="absolute inset-0 bg-zinc-900 overflow-hidden pointer-events-none select-none" aria-hidden="true">
         <iframe
           ref={iframeRef}
-          src={`https://www.youtube.com/embed/${game.trailerId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${game.trailerId}&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&enablejsapi=1`}
+          /* 🌟 youtube.com 대신 youtube-nocookie.com 사용! */
+          src={`https://www.youtube-nocookie.com/embed/${game.trailerId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${game.trailerId}&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&enablejsapi=1`}
           className="absolute w-full h-[110%] -top-[10%] object-cover scale-[1.1] opacity-40 pointer-events-none"
           allow="autoplay; encrypted-media"
           title={`${game.title} Background`}
@@ -94,8 +97,8 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
         />
       </div>
 
-      {/* 그라데이션 오버레이 */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none z-10" />
+      {/* 그라데이션 오버레이 (영상을 덜 가리도록 하단 어둠 비중을 살짝 높였습니다) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
 
       {/* 텍스트 & 커스텀 컨트롤러 영역 */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -111,7 +114,9 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
             <span className="text-white/30">•</span>
             <span>{game.year}</span>
           </div>
-          <h1 className="text-6xl md:text-[8rem] font-black text-white tracking-tighter uppercase leading-none drop-shadow-2xl">
+          
+          {/* 🌟 수정된 타이틀 렌더링 부분 */}
+          <h1 className={`${finalTitleSize} font-black text-white tracking-tighter uppercase leading-tight drop-shadow-2xl break-keep`}>
             {game.title}
           </h1>
         </FadeIn>
@@ -120,7 +125,6 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
         <FadeIn>
           <div className="flex items-center gap-4 md:mb-4">
             
-            {/* 재생/일시정지 버튼 */}
             <button
               onClick={togglePlay}
               className="w-12 h-12 shrink-0 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/30 hover:scale-105 transition-all"
@@ -132,7 +136,6 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
               )}
             </button>
             
-            {/* 음소거 버튼 + 볼륨 슬라이더 그룹 */}
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 h-12 hover:bg-white/20 transition-all">
               <button onClick={toggleMute} className="text-white shrink-0 hover:scale-110 transition-transform">
                 {isMuted ? (

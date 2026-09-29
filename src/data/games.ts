@@ -14,6 +14,7 @@ export interface Game {
   stats?: { story: number; graphics: number; action: number; sound: number; innovation: number; difficulty: number; };
   themeColor?: string;
   imagePosition?: string;
+  titleSize?: string;
 
 }
 
@@ -51,6 +52,7 @@ export const games: Game[] = [
     features: ["선택에 따라 완전히 달라지는 거대한 스토리 분기", "전략적인 턴제 D&D 전투 시스템", "매력적이고 입체적인 동료 캐릭터들"],
     bosses: [],
     themeColor : "#a855f7",
+    stats: { story: 10, graphics: 7, action: 5, sound: 8, innovation: 8, difficulty: 10 },
     trailerId: "1T22wNvoNiU",
     imageUrl : "/images/baldurs3.jpg",
     imagePosition: "object-cover object-top"
@@ -77,6 +79,7 @@ export const games: Game[] = [
     description: "몽골 제국의 침략에 맞서 쓰시마 섬을 지키기 위한 사카이 진의 고독한 사무라이 액션.",
     features: ["바람이 길을 안내하는 아름다운 오픈 월드", "절도 있고 묵직한 카타나 검술 액션", "무사의 명예와 망령의 길 사이의 갈등"],
     bosses: [],
+    trailerId : "iqysmS4lxwQ",
     imageUrl : "/images/ghost.jpg",
     imagePosition : "object-cover object-[60%_center]"
   },
@@ -88,7 +91,11 @@ export const games: Game[] = [
     developer: "Santa Monica Studio",
     description: "북유럽 신화의 가혹한 세계에서 크레이토스와 그의 아들 아트레우스가 펼치는 서사시.",
     features: ["끊기지 않는 롱테이크 카메라 연출", "리바이어던 도끼를 활용한 묵직한 액션", "아버지와 아들의 깊이 있는 서사"],
-    bosses: []
+    bosses: [],
+    trailerId : "K0u_kAWLJOA",
+    imageUrl : "/images/god of war.jpg",
+    imagePosition: "object-cover object-[center_20%]",
+    themeColor : "#209ef3"
   },
   {
     id: "kcd2",
@@ -98,7 +105,10 @@ export const games: Game[] = [
     developer: "Warhorse Studios",
     description: "15세기 보헤미아 내전을 배경으로 펼쳐지는 헨리의 사실적이고 처절한 중세 생존기.",
     features: ["철저한 역사적 고증을 거친 15세기 유럽", "실제 검술을 바탕으로 한 1인칭 전투", "플레이어의 평판에 반응하는 사실적인 NPC"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/kingdom.jpg",
+    trailerId : "7ynJN-HejlY",
+    themeColor : "#aa4545",
   },
 
   // --- 새로 추가된 25개 게임 ---
@@ -110,7 +120,11 @@ export const games: Game[] = [
     developer: "Crystal Dynamics",
     description: "평범한 고고학도 라라 크로프트가 야생의 생존자로 거듭나는 첫 번째 이야기.",
     features: ["활과 지형지물을 활용한 생존 액션", "긴장감 넘치는 미지의 섬 탐험", "영화 같은 퍼즐과 시네마틱 연출"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/tomb.jpg",
+    imagePosition: "object-cover object-[center_10%]",
+    themeColor : "#808080",
+    trailerId : "zF9m91y8Na0"
   },
   {
     id: "rise-of-the-tomb-raider",
@@ -120,7 +134,11 @@ export const games: Game[] = [
     developer: "Crystal Dynamics",
     description: "불멸의 비밀을 찾아 시베리아의 설원으로 떠나는 혹한의 탐험.",
     features: ["더욱 발전된 크래프팅과 생존 시스템", "시베리아의 아름답고 위험한 설원 묘사", "거대하고 정교해진 고대 무덤 퍼즐"],
-    bosses: []
+    bosses: [],
+     imageUrl : "/images/rise.jpg",
+     imagePosition: "object-cover object-[center_10%]",
+     trailerId : "1_FIyNcQSgA",
+      themeColor : "#3676ec"
   },
   {
     id: "shadow-of-the-tomb-raider",
@@ -130,7 +148,11 @@ export const games: Game[] = [
     developer: "Eidos-Montréal",
     description: "마야의 종말을 막기 위해 정글의 그림자가 되어야 하는 라라의 마지막 기원 이야기.",
     features: ["정글의 환경을 활용한 은신 스텔스 액션", "시리즈 역대 최대 규모의 수중 탐험과 무덤", "어두워진 내면과 진정한 툼레이더로의 각성"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/shadow.jpg",
+    imagePosition: "object-cover object-[center_10%]",
+    trailerId : "b1FvYc3c64w",
+    themeColor : "#36ec73"
   },
   {
     id: "detroit-become-human",
@@ -140,7 +162,12 @@ export const games: Game[] = [
     developer: "Quantic Dream",
     description: "안드로이드가 자아를 갖게 된 근미래, 세 기계의 선택이 인류의 미래를 결정한다.",
     features: ["플레이어의 선택에 따라 수만 가지로 갈라지는 서사", "마커스, 카라, 코너 3인의 얽히고설킨 시점", "인간성과 기계의 경계에 대한 깊은 철학적 질문"],
-    bosses: []
+    bosses: [],
+     imageUrl : "/images/DETR.jpg",
+    imagePosition: "object-cover object-[center_45%]",
+    trailerId : "MkmVsCj1xEQ",
+    themeColor : "#9FAFCE"
+
   },
   {
     id: "days-gone",
@@ -150,17 +177,23 @@ export const games: Game[] = [
     developer: "Bend Studio",
     description: "전염병으로 멸망한 세계, 드리프터 디컨 세인트 존이 오토바이를 타고 생존을 위해 달린다.",
     features: ["화면에 수백 마리씩 쏟아지는 프리커(좀비) 호드와의 사투", "바이크 업그레이드와 연료 관리 생존 시스템", "태평양 북서부의 척박하고 아름다운 오픈 월드"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/daysgone.jpg",
+    imagePosition: "object-cover object-[center_100%]",
+    trailerId : "RjRLSZalxgs",
   },
   {
     id: "dead-space",
-    title: "데드 스페이스",
+    title: "데드 스페이스 리메이크",
     genre: "Survival Horror",
-    year: 2008,
+    year: 2023,
     developer: "Visceral Games",
     description: "통신이 두절된 우주선 이시무라 호에서 벌어지는 끔찍한 네크로모프와의 우주 생존기.",
     features: ["팔다리를 전략적으로 절단해야 하는 독특한 전투", "UI를 화면에 띄우지 않는 궁극의 몰입감(다이제틱 UI)", "우주 공간의 폐소공포증을 자극하는 사운드 디자인"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/deadspace.jpg",
+    imagePosition: "object-cover object-[center_21%]",
+    trailerId : "cTDJNZ9cK1w",
   },
   {
     id: "rdr2",
@@ -170,17 +203,25 @@ export const games: Game[] = [
     developer: "Rockstar Games",
     description: "무법자의 시대가 저물어가는 1899년 미국, 아서 모건과 반 더 린드 갱단의 장엄한 낭만과 몰락.",
     features: ["비디오 게임 역사상 가장 생동감 넘치고 사실적인 오픈 월드", "NPC와 상호작용하는 경이로운 디테일", "눈물을 쏟게 만드는 압도적인 서사"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/red dead.jpg",
+    imagePosition: "object-cover object-[center_30%]",
+    themeColor : "#fb0808",
+    trailerId : "g-WKpapqVU8"
   },
   {
     id: "persona-5",
-    title: "페르소나 5",
+    title: "페르소나 5 로열",
     genre: "JRPG",
     year: 2016,
     developer: "P-Studio",
     description: "낮에는 평범한 고등학생, 밤에는 부패한 어른들의 마음을 훔치는 '마음의 괴도단'의 활약극.",
     features: ["스타일리시함의 극치를 보여주는 UI와 아트워크", "턴제 전투의 완성도를 끌어올린 프레스 턴 시스템", "매력적인 캐릭터들과의 일상 커뮤니티(코프)"],
-    bosses: []
+    bosses: [],
+   imageUrl : "/images/pr5 loyal.jpg",
+    imagePosition: "object-cover object-[center_20%]",
+    themeColor : " #FF0000",
+    trailerId : "fh6rjo81MHY"
   },
   {
     id: "danganronpa-1",

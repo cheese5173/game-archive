@@ -44,71 +44,78 @@ export default function Home() {
     <main className="min-h-screen bg-black pb-24 relative overflow-hidden">
       <Hero />
       
-      <section className="max-w-7xl mx-auto px-6 mt-16">
-        
-     {/* 🌟 3번 트렌드: 신화적 도서관 컨셉 (Choose Your Game) */}
-        <div className="relative mb-20 py-12 flex flex-col items-center justify-center overflow-hidden cursor-default">
+      {/* 🌟 여백(px-6)을 바깥으로 빼고, max-w-7xl 박스를 안쪽으로 분리했습니다. */}
+      <section className="w-full px-6 mt-16">
+        <div className="max-w-7xl mx-auto">
           
-          {/* 1. 배경 마키(Marquee) 텍스트 - 신화적인 아카이브 느낌으로 문구 변경 */}
-          <motion.div
-            animate={{ x: [0, -1200] }}
-            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/2 -translate-y-1/2 whitespace-nowrap text-[12vw] md:text-[8rem] font-black opacity-10 text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.8)] select-none pointer-events-none tracking-widest"
-          >
-            THE GREAT ARCHIVE OF REALMS — SELECT YOUR DESTINY — ANCIENT RECORDS — THE GREAT ARCHIVE OF REALMS — 
+          {/* 🌟 3번 트렌드: 신화적 도서관 컨셉 (Choose Your Game) */}
+          <div className="relative mb-20 py-12 flex flex-col items-center justify-center overflow-hidden cursor-default">
+            
+            {/* 1. 배경 마키(Marquee) 텍스트 - 신화적인 아카이브 느낌으로 문구 변경 */}
+            <motion.div
+              animate={{ x: [0, -1200] }}
+              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+              className="absolute top-1/2 -translate-y-1/2 whitespace-nowrap text-[12vw] md:text-[8rem] font-black opacity-10 text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.8)] select-none pointer-events-none tracking-widest"
+            >
+              THE GREAT ARCHIVE OF REALMS — SELECT YOUR DESTINY — ANCIENT RECORDS — THE GREAT ARCHIVE OF REALMS — 
+            </motion.div>
+
+            {/* 2. 유저의 마우스에 반응하는 메인 외곽선 타이포그래피 */}
+            <motion.div 
+              variants={textContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+              className="relative z-10 flex w-full justify-center" 
+            >
+              {/* 🌟 16글자가 화면에 맞도록 크기 축소 및 띄어쓰기 완벽 대응 */}
+              {"CHOOSE YOUR GAME".split("").map((letter, index) => (
+                <motion.span 
+                  key={index} 
+                  variants={textItem} 
+                  // 빈 공간(띄어쓰기)일 때는 소리가 나지 않도록 예외 처리
+                  onMouseEnter={letter === " " ? undefined : playHoverSound} 
+                  className={`font-black uppercase tracking-tighter leading-none inline-block origin-bottom transition-all duration-300 text-transparent [-webkit-text-stroke:2px_white] md:[-webkit-text-stroke:3px_white] drop-shadow-2xl 
+                    ${letter === " " 
+                      ? "w-[2.5vw] md:w-[1.5rem]" // 띄어쓰기일 경우 너비만 차지하게 고정
+                      : "hover:text-white hover:scale-110 hover:-translate-y-6" // 글자일 경우에만 애니메이션 작동
+                    } 
+                    text-[6vw] md:text-[3.8rem] lg:text-[4.8rem] xl:text-[5.5rem]`}
+                >
+                  {/* HTML에서 빈 공간이 무시되지 않도록 \u00A0(공백 문자)로 변환 */}
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+          
+          {/* 랜덤 6개 카드 그리드 */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <AnimatePresence mode="popLayout">
+              {randomGames.map((game) => (
+                <motion.div
+                  key={game.id}
+                  layout 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4, type: "spring", bounce: 0.3 }}
+                >
+                  <GameCard3D
+                    id={game.id}
+                    title={game.title}
+                    genre={game.genre}
+                    year={game.year}
+                    themeColor={game.themeColor}
+                    imageUrl={game.imageUrl}           // 👈 🌟 추가 완료
+                    imagePosition={game.imagePosition} // 👈 🌟 추가 완료
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </motion.div>
 
-          {/* 2. 유저의 마우스에 반응하는 메인 외곽선 타이포그래피 */}
-          <motion.div 
-            variants={textContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            className="relative z-10 flex w-full justify-center" 
-          >
-            {/* 🌟 16글자가 화면에 맞도록 크기 축소 및 띄어쓰기 완벽 대응 */}
-            {"CHOOSE YOUR GAME".split("").map((letter, index) => (
-              <motion.span 
-                key={index} 
-                variants={textItem} 
-                // 빈 공간(띄어쓰기)일 때는 소리가 나지 않도록 예외 처리
-                onMouseEnter={letter === " " ? undefined : playHoverSound} 
-                className={`font-black uppercase tracking-tighter leading-none inline-block origin-bottom transition-all duration-300 text-transparent [-webkit-text-stroke:2px_white] md:[-webkit-text-stroke:3px_white] drop-shadow-2xl 
-                  ${letter === " " 
-                    ? "w-[2.5vw] md:w-[1.5rem]" // 띄어쓰기일 경우 너비만 차지하게 고정
-                    : "hover:text-white hover:scale-110 hover:-translate-y-6" // 글자일 경우에만 애니메이션 작동
-                  } 
-                  text-[6vw] md:text-[3.8rem] lg:text-[4.8rem] xl:text-[5.5rem]`}
-              >
-                {/* HTML에서 빈 공간이 무시되지 않도록 \u00A0(공백 문자)로 변환 */}
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
-          </motion.div>
         </div>
-        
-        {/* 랜덤 6개 카드 그리드 */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {randomGames.map((game) => (
-              <motion.div
-                key={game.id}
-                layout 
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.4, type: "spring", bounce: 0.3 }}
-              >
-                <GameCard3D
-                  id={game.id}
-                  title={game.title}
-                  genre={game.genre}
-                  year={game.year}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
       </section>
     </main>
   );
