@@ -2,7 +2,8 @@ import { games } from "../../../data/games";
 import { notFound } from "next/navigation";
 import BossGallery from "../../../components/BossGallery";
 import FadeIn from "../../../components/FadeIn";
-import CinematicHero from "../../../components/CinematicHero"; // 👈 새로 만든 부품 불러오기
+import CinematicHero from "../../../components/CinematicHero";
+import RadarChart from "../../../components/RadarChart"; // 👈 차트 부품 불러오기
 
 export default async function GameDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -15,7 +16,7 @@ export default async function GameDetailPage({ params }: { params: Promise<{ id:
   return (
     <main className="min-h-screen bg-black text-gray-200 pb-24">
       
-      {/* 🎬 새롭게 만든 커스텀 시네마틱 히어로 컴포넌트 삽입 */}
+      {/* 🎬 커스텀 시네마틱 히어로 컴포넌트 */}
       <CinematicHero game={game} />
 
       {/* 📖 하단 상세 콘텐츠 영역 */}
@@ -31,10 +32,24 @@ export default async function GameDetailPage({ params }: { params: Promise<{ id:
           </section>
         </FadeIn>
 
-        {/* 게임 특징 구역 */}
+        {/* 🌟 새로 추가된 레이더 차트 구역 (게임에 stats 데이터가 있을 때만 렌더링) */}
+        {game.stats && (
+          <FadeIn>
+            <section>
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6">02. Performance Stats</h2>
+              <div className="bg-white/5 rounded-3xl p-10 border border-white/10 backdrop-blur-sm">
+                <RadarChart stats={game.stats} />
+              </div>
+            </section>
+          </FadeIn>
+        )}
+
+        {/* 게임 특징 구역 (차트 유무에 따라 넘버링 자동 변경) */}
         <FadeIn>
           <section>
-            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6">02. Features</h2>
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6">
+              {game.stats ? "03" : "02"}. Features
+            </h2>
             <ul className="space-y-6">
               {game.features.map((feature, index) => (
                 <li key={index} className="flex items-start gap-4 text-xl text-gray-300">
@@ -50,7 +65,9 @@ export default async function GameDetailPage({ params }: { params: Promise<{ id:
         {game.bosses && game.bosses.length > 0 && (
           <FadeIn>
             <section>
-              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-8">03. Key Bosses</h2>
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-8">
+                {game.stats ? "04" : "03"}. Key Bosses
+              </h2>
               <BossGallery bosses={game.bosses} />
             </section>
           </FadeIn>
@@ -60,7 +77,9 @@ export default async function GameDetailPage({ params }: { params: Promise<{ id:
         {game.dlc && (
           <FadeIn>
             <section>
-              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6">04. Expansion</h2>
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6">
+                {game.stats && game.bosses ? "05" : "04"}. Expansion
+              </h2>
               <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-600">
                 {game.dlc}
               </div>

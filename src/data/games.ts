@@ -1,4 +1,3 @@
-// 1. 상세 페이지가 요구하는 데이터 형식(features, developer 등)을 추가했습니다.
 export interface Game {
   id: string;
   title: string;
@@ -7,13 +6,18 @@ export interface Game {
   description: string;
   developer: string;
   features: string[];
-  bosses?: { name: string; description: string; }[]; // 나중에 보스 갤러리에서 쓸 데이터
+  bosses?: { name: string; description: string; }[];
   dlc?: string;
-  imageUrl?: string; // 메인 포스터나 배경 이미지 경로 (예: "/images/elden-ring.jpg")
-  trailerId?: string; // 유튜브 영상 ID (예: "E3Huy2cdih0")
+  imageUrl?: string; 
+  trailerId?: string; 
+  // 👇 스탯 인터페이스 추가
+  stats?: { story: number; graphics: number; action: number; sound: number; innovation: number; difficulty: number; };
+  themeColor?: string;
+  imagePosition?: string;
+
 }
 
-// 2. 각 게임마다 누락되었던 특징(features) 배열을 추가했습니다.
+
 export const games: Game[] = [
   {
     id: "elden-ring",
@@ -29,8 +33,14 @@ export const games: Game[] = [
       { name: "라단", description: "별 부수는 영웅. 부패에 먹혀가면서도 중력 마법으로 별의 운행을 붙잡고 있는 최강의 데미갓." },
       { name: "고드릭", description: "접목의 군주. 힘에 대한 집착으로 수많은 빛바랜 자들의 팔다리를 자신에게 접목시킨 지배자." },
       { name: "모르고트", description: "축복왕. 흉조로 태어나 버림받았음에도 황금 나무를 수호하기 위해 홀로 로데일의 왕좌를 지키는 비운의 보스." }
-    ]
-  },
+    ],
+    // 👇 엘든 링에 시각화용 스탯 추가
+    stats: { story: 8, graphics: 9, action: 10, sound: 9, innovation: 9, difficulty: 10 },
+    themeColor : "#d4af37",
+    imageUrl : "/images/Elden-ring.jpg",
+    imagePosition: "object-cover"
+  },  
+  
   {
     id: "bg3",
     title: "발더스 게이트 3",
@@ -39,7 +49,11 @@ export const games: Game[] = [
     developer: "Larian Studios",
     description: "주사위가 당신의 운명을 결정하는 잊혀진 세계관 기반의 궁극적인 롤플레잉 경험.",
     features: ["선택에 따라 완전히 달라지는 거대한 스토리 분기", "전략적인 턴제 D&D 전투 시스템", "매력적이고 입체적인 동료 캐릭터들"],
-    bosses: []
+    bosses: [],
+    themeColor : "#a855f7",
+    trailerId: "1T22wNvoNiU",
+    imageUrl : "/images/baldurs3.jpg",
+    imagePosition: "object-cover object-top"
   },
   {
     id: "cyberpunk-2077",
@@ -50,7 +64,9 @@ export const games: Game[] = [
     description: "권력, 사치, 신체 개조에 집착하는 거대 도시 나이트 시티를 배경으로 한 오픈 월드 어드벤처.",
     features: ["압도적인 비주얼의 미래 도시 나이트 시티", "다양한 신체 사이버웨어 개조", "몰입감 넘치는 1인칭 시점 액션"],
      trailerId: "8X2kIfS6fb8",
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/cyberpunk.jpg",
+    themeColor: "#fcee0a"
   },
   {
     id: "ghost-of-tsushima",
@@ -60,7 +76,9 @@ export const games: Game[] = [
     developer: "Sucker Punch",
     description: "몽골 제국의 침략에 맞서 쓰시마 섬을 지키기 위한 사카이 진의 고독한 사무라이 액션.",
     features: ["바람이 길을 안내하는 아름다운 오픈 월드", "절도 있고 묵직한 카타나 검술 액션", "무사의 명예와 망령의 길 사이의 갈등"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/ghost.jpg",
+    imagePosition : "object-cover object-[60%_center]"
   },
   {
     id: "god-of-war",

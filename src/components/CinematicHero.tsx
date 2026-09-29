@@ -87,7 +87,7 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
         <iframe
           ref={iframeRef}
           src={`https://www.youtube.com/embed/${game.trailerId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${game.trailerId}&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&enablejsapi=1`}
-          className="absolute w-full h-[120%] -top-[10%] object-cover scale-[1.5] opacity-40 pointer-events-none"
+          className="absolute w-full h-[110%] -top-[10%] object-cover scale-[1.1] opacity-40 pointer-events-none"
           allow="autoplay; encrypted-media"
           title={`${game.title} Background`}
           tabIndex={-1}

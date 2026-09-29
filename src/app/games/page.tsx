@@ -66,6 +66,9 @@ export default function GamesPage() {
                   title={game.title}
                   genre={game.genre}
                   year={game.year}
+                  themeColor={game.themeColor} 
+                  imageUrl={game.imageUrl}
+                  imagePosition={game.imagePosition}
                 />
               </motion.div>
             ))}
