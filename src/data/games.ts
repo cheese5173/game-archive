@@ -15,6 +15,7 @@ export interface Game {
   themeColor?: string;
   imagePosition?: string;
   titleSize?: string;
+  cardTitleSize?: string;
 
 }
 
@@ -99,7 +100,7 @@ export const games: Game[] = [
   },
   {
     id: "kcd2",
-    title: "킹덤 컴: 딜리버런스 2",
+    title: "킹덤 컴 : 딜리버런스 2",
     genre: "Action RPG",
     year: 2025,
     developer: "Warhorse Studios",
@@ -218,7 +219,7 @@ export const games: Game[] = [
     description: "낮에는 평범한 고등학생, 밤에는 부패한 어른들의 마음을 훔치는 '마음의 괴도단'의 활약극.",
     features: ["스타일리시함의 극치를 보여주는 UI와 아트워크", "턴제 전투의 완성도를 끌어올린 프레스 턴 시스템", "매력적인 캐릭터들과의 일상 커뮤니티(코프)"],
     bosses: [],
-   imageUrl : "/images/pr5 loyal.jpg",
+    imageUrl : "/images/pr5 loyal.jpg",
     imagePosition: "object-cover object-[center_20%]",
     themeColor : " #FF0000",
     trailerId : "fh6rjo81MHY"
@@ -231,7 +232,10 @@ export const games: Game[] = [
     developer: "Spike Chunsoft",
     description: "초고교급 재능을 가진 학생들이 갇힌 희망봉 학원, 졸업하기 위한 끔찍한 살인 게임이 시작된다.",
     features: ["추리와 액션을 결합한 독특한 '학급재판' 시스템", "강렬하고 기괴한 팝 아트 스타일의 캐릭터 디자인", "모노쿠마가 선사하는 예측 불가능한 반전"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/dangan.jpg",
+    themeColor : "#e826a1",
+    trailerId : "",
   },
   {
     id: "danganronpa-2",
@@ -241,7 +245,10 @@ export const games: Game[] = [
     developer: "Spike Chunsoft",
     description: "남국의 섬 재버워크에서 벌어지는 더 잔혹해진 살인 수학여행.",
     features: ["논파 기믹이 추가되어 더욱 복잡해진 학급재판", "아름다운 휴양지와 대비되는 절망적인 스토리", "전작을 뒤집는 충격적인 진실"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/dangan2.jpg",
+    themeColor :"",
+    trailerId : "",
   },
   {
     id: "danganronpa-v3",
@@ -251,7 +258,10 @@ export const games: Game[] = [
     developer: "Spike Chunsoft",
     description: "사이슈 학원을 무대로, 거짓말을 무기로 삼아 진실을 파헤치는 새로운 살인 신학기.",
     features: ["자신의 발언을 '거짓말'로 위장하여 재판을 유도하는 시스템", "가장 화려해진 재판 연출과 미니 게임", "시리즈의 근간을 흔드는 호불호 강한 결말"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/dangan3.jpg",
+    imagePosition : "object-cover object-[center_80%]"
+
   },
   {
     id: "ac-origins",
@@ -261,7 +271,11 @@ export const games: Game[] = [
     developer: "Ubisoft",
     description: "고대 이집트를 무대로, 암살단이 창설된 기원을 다루는 바예크의 복수극.",
     features: ["RPG 요소가 본격 도입된 시리즈의 성공적인 터닝 포인트", "경이로운 고증으로 구현된 이집트와 피라미드 탐험", "독수리 세누를 활용한 정찰 시스템"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/origin.jpg",
+    imagePosition : "object-cover object-[center_80%]",
+    trailerId : "wLeZWu0cE4o",
+    themeColor : "#dcd3b2"
   },
   {
     id: "ac-unity",
@@ -271,7 +285,10 @@ export const games: Game[] = [
     developer: "Ubisoft",
     description: "프랑스 대혁명 시기의 파리, 템플 기사단과 암살단의 음모 속에서 아르노 핑계가 겪는 이야기.",
     features: ["수천 명의 군중이 구현된 당시 최고의 그래픽 기술", "실물 스케일의 노틀담 대성당과 파리 시내 파쿠르", "가장 부드럽고 매끄러운 파쿠르 모션"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/unity.jpg",
+    trailerId : "taNGuF_k5Ao",
+    themeColor : "#40169c"
   },
   {
     id: "ac-odyssey",
@@ -281,17 +298,27 @@ export const games: Game[] = [
     developer: "Ubisoft",
     description: "펠로폰네소스 전쟁이 한창인 고대 그리스에서 펼쳐지는 용병 미스티오스의 방대한 오디세이.",
     features: ["선택지가 도입된 대화 시스템과 멀티 엔딩", "광활한 에게 해를 누비는 해상전", "신화 속 괴물들과의 압도적인 보스전"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/odyssey.jpg",
+    imagePosition : "object-cover object-[center_80%]",
+    trailerId : "so2SeY_UaeM",
+    themeColor : "#ffd700"
   },
   {
     id: "sekiro",
-    title: "세키로: 섀도우 다이 트와이스",
+    title: "세키로 : 섀도우 다이 트와이스",
     genre: "Action Adventure",
     year: 2019,
     developer: "FromSoftware",
     description: "전국 시대 말기, 주군을 지키기 위해 검을 든 닌자 '늑대'의 목숨을 건 혈투.",
     features: ["적의 공격을 튕겨내는 '패링(튕겨내기)' 중심의 극강 전투 쾌감", "갈고리를 활용한 입체적인 이동과 닌자 의수", "체력이 아닌 '체간'을 무너뜨리는 쫄깃한 시스템"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/sekiro.jpg",
+    imagePosition : "object-cover object-[center_100%]",
+    titleSize: "text-5xl md:text-6xl lg:text-7xl",
+    themeColor : "#9a1313",
+    trailerId : "rXMX4YJ7Lks",
+        
   },
   {
     id: "metro-exodus",
@@ -301,7 +328,10 @@ export const games: Game[] = [
     developer: "4A Games",
     description: "핵전쟁으로 파괴된 러시아 툰드라를 가로지르는 오로라 호와 아르티옴의 장엄한 기차 여행.",
     features: ["지하철에서 벗어나 광활한 사계절의 지상으로 무대 확장", "총기 청소와 자원 관리가 필수인 하드코어 생존", "레이트레이싱이 적용된 숨막히는 그래픽"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/metro.jpg",
+    imagePosition : "object-cover object-[center_20%]",
+    trailerId : "c_YddLpfD5o",
   },
   {
     id: "twd-season1",
@@ -311,7 +341,11 @@ export const games: Game[] = [
     developer: "Telltale Games",
     description: "좀비 아포칼립스 속에서 범죄자 리 에버렛과 어린 소녀 클레멘타인이 만들어가는 눈물겨운 유대.",
     features: ["극한의 도덕적 딜레마를 강요하는 선택지", "플레이어의 선택을 기억하는 캐릭터들", "게임 역사상 가장 감동적인 결말 중 하나"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/walking1.png",
+    imagePosition : "object-cover object-[center_15%]",
+    trailerId : "N40uY51s5Z0",  
+    themeColor : "#a63e11",
   },
   {
     id: "twd-season2",
@@ -321,7 +355,8 @@ export const games: Game[] = [
     developer: "Telltale Games",
     description: "이제는 스스로 생존하는 법을 배워야 하는 어린 소녀 클레멘타인의 잔혹한 여정.",
     features: ["보호자 없이 가혹한 세계를 마주하는 주인공의 시점", "전작보다 더욱 절망적이고 암울해진 상황들", "이전 시즌의 선택이 반영되는 서사"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/walking2.jpg"
   },
   {
     id: "twd-new-frontier",
@@ -333,6 +368,7 @@ export const games: Game[] = [
     features: ["새로운 생존자 그룹의 시점으로 전개되는 이야기", "업그레이드된 그래픽 엔진과 연출", "성장하여 더 강인해진 클레멘타인의 등장"],
     bosses: []
   },
+
   {
     id: "dispatch",
     title: "디스패치",

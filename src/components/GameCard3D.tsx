@@ -13,10 +13,11 @@ interface GameCardProps {
   themeColor?: string;
   imageUrl?: string;
   imagePosition?: string; // 🌟 추가됨
+  cardTitleSize?: string;
 }
 
 // 🌟 매개변수(props)에 imagePosition 추가
-export default function GameCard3D({ id, title, genre, year, themeColor, imageUrl, imagePosition }: GameCardProps) {
+export default function GameCard3D({ id, title, genre, year, themeColor, imageUrl, imagePosition, cardTitleSize }: GameCardProps) {
   
   // 🌟 Tailwind가 동적 클래스를 지우는 것을 막기 위한 방어 코드 추가
   const tailwindSafelist = "object-cover object-contain object-top object-bottom object-center object-left object-right";
@@ -99,9 +100,9 @@ export default function GameCard3D({ id, title, genre, year, themeColor, imageUr
             <span className="text-white/20">•</span>
             <span className="group-hover:text-white transition-colors duration-300">{year}</span>
           </div>
-          <h3 className="hover-glitch text-4xl font-black text-white uppercase tracking-tighter drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
-            {title}
-          </h3>
+          <h3 className={`hover-glitch ${cardTitleSize || "text-4xl"} font-black text-white uppercase tracking-tighter drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] break-keep`}>
+          {title}
+      </h3>
         </div>
       </motion.div>
     </Link>

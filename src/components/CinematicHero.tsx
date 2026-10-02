@@ -116,7 +116,7 @@ export default function CinematicHero({ game }: CinematicHeroProps) {
           </div>
           
           {/* 🌟 수정된 타이틀 렌더링 부분 */}
-          <h1 className={`${finalTitleSize} font-black text-white tracking-tighter uppercase leading-tight drop-shadow-2xl break-keep`}>
+          <h1 className={`${finalTitleSize} font-black text-white tracking-normal uppercase leading-tight drop-shadow-2xl break-keep`}>
             {game.title}
           </h1>
         </FadeIn>

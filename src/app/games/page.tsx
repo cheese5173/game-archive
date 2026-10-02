@@ -69,6 +69,7 @@ export default function GamesPage() {
                   themeColor={game.themeColor} 
                   imageUrl={game.imageUrl}
                   imagePosition={game.imagePosition}
+                  cardTitleSize={game.cardTitleSize}
                 />
               </motion.div>
             ))}
