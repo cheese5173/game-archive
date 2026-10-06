@@ -182,6 +182,7 @@ export const games: Game[] = [
     imageUrl : "/images/daysgone.jpg",
     imagePosition: "object-cover object-[center_100%]",
     trailerId : "RjRLSZalxgs",
+    themeColor : "#965107"
   },
   {
     id: "dead-space",
@@ -335,7 +336,7 @@ export const games: Game[] = [
   },
   {
     id: "twd-season1",
-    title: "워킹 데드 시즌 1",
+    title: "더 워킹 데드 시즌 1",
     genre: "Interactive Drama",
     year: 2012,
     developer: "Telltale Games",
@@ -349,24 +350,46 @@ export const games: Game[] = [
   },
   {
     id: "twd-season2",
-    title: "워킹 데드 시즌 2",
+    title: "더 워킹 데드 시즌 2",
     genre: "Interactive Drama",
     year: 2013,
     developer: "Telltale Games",
     description: "이제는 스스로 생존하는 법을 배워야 하는 어린 소녀 클레멘타인의 잔혹한 여정.",
     features: ["보호자 없이 가혹한 세계를 마주하는 주인공의 시점", "전작보다 더욱 절망적이고 암울해진 상황들", "이전 시즌의 선택이 반영되는 서사"],
     bosses: [],
-    imageUrl : "/images/walking2.jpg"
+    imageUrl : "/images/walking2.jpg",
+    imagePosition : "object-cover object-[center_1%]",
+    themeColor : "#a63e11",
+    trailerId : "LUUWhBo20Ho",
   },
   {
     id: "twd-new-frontier",
-    title: "워킹 데드: 뉴 프론티어",
+    title: "더 워킹 데드 : 뉴 프론티어",
     genre: "Interactive Drama",
     year: 2016,
     developer: "Telltale Games",
     description: "새로운 주인공 하비와 한층 성장한 클레멘타인이 가족을 지키기 위해 맞서는 이야기.",
     features: ["새로운 생존자 그룹의 시점으로 전개되는 이야기", "업그레이드된 그래픽 엔진과 연출", "성장하여 더 강인해진 클레멘타인의 등장"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/walking frontier.jpg",
+    imagePosition : "object-cover object-[center_20%]",
+    themeColor : "#e43715",
+    trailerId : "98KbiRYXmkQ",
+  },
+  {
+    id: "twd-final",
+    title: "더 워킹 데드 : 더 파이널 시즌",
+    genre: "Interactive Drama",
+    year: 2018,
+    developer: "Telltale Games",
+    description: "",
+    features: ["", "", ""],
+    bosses: [],
+    imageUrl : "/images/walking final.png",
+    imagePosition : "",
+    themeColor : "#a63e11",
+    trailerId : "r2JcjcVhtGw",
+    
   },
 
   {
@@ -376,8 +399,12 @@ export const games: Game[] = [
     year: 2025,
     developer: "adhoc studio",
     description: "정보가 확인되지 않은 타이틀입니다.",
-    features: ["일반적인 슈퍼히어로물과 달리 '직장', 과 '일상'이라는 공간에 초점", "플레이어는 슈퍼히어로 콜센터의 디스패처(긴급신고 접수요원) 역할을 맡는다. 이러한 게임 방식은 911 Operator나 This Is the Police 시리즈와 매우 유사하다.", "미확인 특징 2"],
-    bosses: []
+    features: ["일반적인 슈퍼히어로물과 달리 '직장', 과 '일상'이라는 공간에 초점", "플레이어는 슈퍼히어로 콜센터의 디스패처(긴급신고 접수요원) 역할을 맡는다. 이러한 게임 방식은 911 Operator나 This Is the Police 시리즈와 매우 유사.", "미확인 특징 2"],
+    bosses: [],
+    imageUrl : "/images/dispatch.jpg",
+    themeColor : "#faef1e",
+    trailerId : "jK0cGKMDMPE",
+
   },
   {
     id: "dishonored-1",
@@ -387,7 +414,11 @@ export const games: Game[] = [
     developer: "Arkane Studios",
     description: "여제를 암살했다는 누명을 쓴 호국경 코르보 아타노가 가면을 쓰고 그림자 속에서 벌이는 복수극.",
     features: ["마법(점멸 등)과 물리 엔진을 창의적으로 결합하는 플레이", "불살(은신)과 학살에 따라 완전히 변하는 혼돈도 시스템", "산업혁명과 고래기름이 결합된 독특한 스팀펑크 세계관"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/dishonerd.jpg",
+    imagePosition : "object-cover object-[center_20%]",
+    themeColor : "#5f5648",
+    trailerId : "XMCzCvR-O8M"
   },
   {
     id: "dishonored-2",
