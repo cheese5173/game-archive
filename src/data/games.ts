@@ -428,7 +428,10 @@ export const games: Game[] = [
     developer: "Arkane Studios",
     description: "코르보 혹은 에밀리가 되어 찬탈자 딜라일라로부터 왕좌를 되찾기 위한 남부 카르나카로의 여정.",
     features: ["2명의 플레이어블 캐릭터와 각기 다른 초능력 트리", "시간 여행과 태엽 저택 등 게임 역사에 남을 천재적인 레벨 디자인", "한층 더 정교해진 잠입 및 암살 루트"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/dishonerd2.jpg",
+    themeColor : "#5f5648",
+    trailerId : "IcfkMO5Fw3w",
   },
   {
     id: "little-nightmares",
@@ -438,7 +441,11 @@ export const games: Game[] = [
     developer: "Tarsier Studios",
     description: "기괴한 해저식당 '목구멍'에 갇힌 노란 우비 소녀 식스의 탈출기.",
     features: ["대사 한 마디 없이 묘사되는 소름 돋는 그로테스크 아트", "거대한 어른들을 피해 도망치는 숨바꼭질의 공포", "상상력을 자극하는 충격적인 메타포"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/littlenight.jpg",
+    themeColor : "#c1e44d",
+    trailerId : "aOadxZBsPiA",
+
   },
   {
     id: "outlast",
@@ -448,7 +455,11 @@ export const games: Game[] = [
     developer: "Red Barrels",
     description: "무기 하나 없이 캠코더 하나만 들고 정신병원의 끔찍한 진실을 취재하러 간 기자의 악몽.",
     features: ["반격 불가, 오직 '도망'과 '숨기'만 가능한 극한의 공포", "캠코더 적외선 모드와 배터리를 관리하는 긴장감", "광인들의 끈질긴 추격과 점프스케어"],
-    bosses: []
+    bosses: [],
+    imageUrl : "/images/outlast 1.jpg",
+    imagePosition : "object-cover object-[center_100%]",
+    trailerId : "UUTON8f-YKg",
+    themeColor : "",
   },
   {
     id: "clair-obscur-33",
